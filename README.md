@@ -110,9 +110,4 @@ Thumbs.db
 
 ---
 
-## Screenshots
-
-![AI Task Manager UI](frontend/public/image-1.png)
-
-![Task Board](frontend/public/image.png)
 
