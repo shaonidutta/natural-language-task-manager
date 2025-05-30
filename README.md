@@ -27,7 +27,10 @@ Transform your natural language into actionable tasks with a modern, mobile-resp
 
 1. Ensure your MySQL server is running and accessible.
 2. Create a database (e.g. `task_manager`).
-3. Run the SQL script at `backend/src/db/init_postgress.sql` to create the necessary tables.
+3. Run the SQL script at `backend/src/db/init_postgres.sql` to create the necessary tables.
+
+**Schema Note:**
+- The `due_datetime` column is now a `TEXT` field and stores the original natural language string (e.g., '20th June, 11pm'), not a date/time value.
 
 ---
 

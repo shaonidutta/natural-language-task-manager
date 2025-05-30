@@ -28,7 +28,7 @@ async function initializeDatabase() {
                 id VARCHAR(36) PRIMARY KEY,
                 task_name TEXT NOT NULL,
                 assignee TEXT NOT NULL,
-                due_datetime DATETIME NOT NULL,
+                due_datetime TEXT NOT NULL,
                 priority ENUM('P1', 'P2', 'P3', 'P4') NOT NULL DEFAULT 'P3',
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP

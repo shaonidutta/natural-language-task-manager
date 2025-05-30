@@ -171,7 +171,7 @@ export function TaskCard({ task, onUpdate, onDelete }: TaskCardProps) {
 
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Calendar className="w-4 h-4 flex-shrink-0" />
-              <span>{task.due_datetime ? formatDateTime(task.due_datetime) : ''}</span>
+              <span>{task.due_datetime || ''}</span>
             </div>
           </div>
         )}

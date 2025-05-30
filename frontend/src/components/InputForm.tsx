@@ -15,8 +15,7 @@ export function InputForm({ onParse, isLoading }: InputFormProps) {
     e.preventDefault()
     if (text.trim()) {
       onParse({ 
-        text: text.trim(),
-        mode: 'single'
+        text: text.trim()
       })
     }
   }
@@ -41,7 +40,7 @@ export function InputForm({ onParse, isLoading }: InputFormProps) {
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="e.g., Schedule a follow-up meeting with the client next Friday"
+            placeholder="e.g., Finish the landing page by Shaoni on May 3, 2025 at 7:00 PM"
             className="w-full px-6 py-4 bg-gray-800/50 backdrop-blur-sm border border-gray-600/50 rounded-xl text-gray-100 placeholder-gray-400 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200 text-lg"
             disabled={isLoading}
           />
@@ -75,12 +74,11 @@ export function InputForm({ onParse, isLoading }: InputFormProps) {
       {/* Example hints */}
       <div className="p-6 bg-blue-900/20 backdrop-blur-sm rounded-xl border border-blue-700/30">
         <h3 className="font-medium text-blue-300 mb-3 text-lg">
-          Example single tasks:
+          Example tasks:
         </h3>
         <div className="text-blue-200/80 space-y-2">
-          <p>• "Send the quarterly report to Sarah by end of week"</p>
-          <p>• "Review the new design mockups and provide feedback"</p>
-          <p>• "Schedule a team standup for next Monday morning"</p>
+          <p>• "Finish landing page Aman by 11pm 20th June"</p>
+          <p>• "Call client Rajeev tomorrow 5pm"</p>
         </div>
       </div>
     </section>

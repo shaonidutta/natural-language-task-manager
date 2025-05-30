@@ -3,6 +3,7 @@ const router = express.Router();
 const { pool } = require('../config/database');
 const { v4: uuidv4 } = require('uuid');
 const chrono = require('chrono-node');
+const taskService = require('../services/taskService');
 
 function toMySQLDateTime(dateString) {
     const date = new Date(dateString);
@@ -48,33 +49,16 @@ router.get('/tasks', async (req, res) => {
     }
 });
 
-// Create a new task
+// Create a new task using improved parser
 router.post('/parse', async (req, res) => {
     try {
         const { text } = req.body;
         if (!text) {
             return res.status(400).json({ error: 'Missing task text' });
         }
-
-        const { task_name, assignee, due_datetime, priority } = parseTask(text);
-        if (!due_datetime) {
-            return res.status(400).json({ error: 'Could not parse due date/time' });
-        }
-
-        const task = {
-            id: uuidv4(),
-            task_name,
-            assignee,
-            due_datetime,
-            priority
-        };
-
-        await pool.query(
-            'INSERT INTO tasks (id, task_name, assignee, due_datetime, priority) VALUES (?, ?, ?, ?, ?)',
-            [task.id, task.task_name, task.assignee, task.due_datetime, task.priority]
-        );
-
-        res.status(201).json(task);
+        // Use improved parser from taskService
+        const tasks = await taskService.parseAndCreateTasks(text, 'single');
+        res.status(201).json(tasks[0]);
     } catch (error) {
         console.error('Error creating task:', error);
         res.status(500).json({ error: 'Failed to create task' });
